@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MARCARGO | Logística Portuaria</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>MARCARGO | Conectamos tu mundo, sin fronteras</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
@@ -13,62 +13,71 @@
     --rose-pale: #FFF0F4;
     --rose-mid: #FFD6E3;
     --dark: #1A0D12;
+    --dark2: #120009;
     --text: #2C1520;
     --muted: #7A5260;
     --white: #FFFFFF;
   }
+  html { scroll-behavior: smooth; }
   body { font-family: 'Poppins', sans-serif; background: var(--white); color: var(--text); overflow-x: hidden; }
 
-  /* NAV */
+  /* ─── NAV ─── */
   header {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 0 6%;
     height: 72px;
     display: flex; align-items: center; justify-content: space-between;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(18px);
     border-bottom: 1px solid rgba(232,65,106,0.1);
+    transition: box-shadow .3s;
   }
-  .logo { display: flex; align-items: center; gap: 10px; }
+  header.scrolled { box-shadow: 0 4px 32px rgba(26,13,18,0.08); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-icon {
-    width: 36px; height: 36px;
+    width: 38px; height: 38px;
     background: var(--rose);
     border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
   }
   .logo-icon svg { width: 20px; height: 20px; fill: white; }
   .logo-text { font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: 2px; }
-  nav { display: flex; gap: 36px; }
+  nav { display: flex; gap: 32px; }
   nav a { text-decoration: none; font-size: 13px; font-weight: 500; color: var(--muted); transition: color .2s; letter-spacing: .5px; cursor: pointer; }
   nav a:hover { color: var(--rose); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
   .btn-nav {
     background: var(--rose); color: white;
     padding: 10px 24px; border-radius: 50px;
     font-size: 13px; font-weight: 600; cursor: pointer;
     border: none; letter-spacing: .5px;
     transition: background .2s, transform .15s;
+    white-space: nowrap;
   }
   .btn-nav:hover { background: #c93059; transform: translateY(-1px); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; border-radius: 2px; transition: .3s; }
 
-  /* HERO */
+  /* ─── HERO ─── */
   .hero {
     min-height: 100vh;
     display: flex; align-items: center;
-    padding: 0 6%;
+    padding: 100px 6% 80px;
     position: relative;
     overflow: hidden;
     background: #0D0610;
   }
   .hero-bg {
     position: absolute; inset: 0;
-    background: url('https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=1400&q=80') center/cover;
-    opacity: 0.22;
+    background: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1600&q=80') center/cover;
+    opacity: 0.18;
   }
   .hero-gradient {
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse 80% 80% at 60% 50%, rgba(232,65,106,0.18), transparent 70%);
+    background: radial-gradient(ellipse 80% 80% at 60% 50%, rgba(232,65,106,0.16), transparent 70%);
   }
-  .hero-content { position: relative; z-index: 2; max-width: 620px; }
+  .hero-content { position: relative; z-index: 2; max-width: 640px; }
   .hero-tag {
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(232,65,106,0.15);
@@ -78,25 +87,27 @@
     padding: 6px 16px; border-radius: 50px;
     margin-bottom: 28px; letter-spacing: 1px;
   }
-  .hero-tag-dot { width: 6px; height: 6px; background: var(--rose-light); border-radius: 50%; }
+  .hero-tag-dot { width: 6px; height: 6px; background: var(--rose-light); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
   .hero h1 {
-    font-size: clamp(36px, 5vw, 64px);
-    font-weight: 700;
+    font-size: clamp(36px, 5vw, 66px);
+    font-weight: 800;
     color: white;
-    line-height: 1.1;
+    line-height: 1.08;
     margin-bottom: 24px;
+    letter-spacing: -1px;
   }
   .hero h1 span { color: var(--rose-light); }
-  .hero p { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 40px; font-weight: 300; max-width: 480px; }
+  .hero p { font-size: 17px; color: rgba(255,255,255,0.52); line-height: 1.75; margin-bottom: 44px; font-weight: 300; max-width: 500px; }
   .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
   .btn-primary {
     background: var(--rose); color: white;
     padding: 16px 36px; border-radius: 50px;
     font-size: 15px; font-weight: 600;
     border: none; cursor: pointer;
-    transition: background .2s, transform .15s;
+    transition: background .2s, transform .15s, box-shadow .2s;
   }
-  .btn-primary:hover { background: #c93059; transform: translateY(-2px); }
+  .btn-primary:hover { background: #c93059; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(232,65,106,0.4); }
   .btn-ghost {
     background: transparent; color: rgba(255,255,255,0.7);
     padding: 16px 36px; border-radius: 50px;
@@ -105,38 +116,74 @@
     transition: border-color .2s, color .2s;
   }
   .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: white; }
+  .hero-chips { display: flex; gap: 10px; margin-top: 48px; flex-wrap: wrap; }
+  .hero-chip {
+    padding: 6px 14px; border-radius: 50px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.45);
+    font-size: 12px; font-weight: 400; letter-spacing: .3px;
+  }
 
-  /* STATS STRIP */
+  /* ─── STATS ─── */
   .stats {
     background: var(--rose-pale);
-    padding: 48px 6%;
+    padding: 56px 6%;
     display: flex; gap: 0;
     justify-content: center;
   }
   .stat {
     flex: 1; max-width: 220px;
     text-align: center;
-    padding: 0 24px;
+    padding: 0 28px;
     border-right: 1px solid rgba(232,65,106,0.15);
   }
   .stat:last-child { border-right: none; }
-  .stat-num { font-size: 40px; font-weight: 700; color: var(--rose); line-height: 1; margin-bottom: 6px; }
+  .stat-num { font-size: 42px; font-weight: 800; color: var(--rose); line-height: 1; margin-bottom: 6px; letter-spacing: -1px; }
   .stat-label { font-size: 13px; color: var(--muted); font-weight: 400; letter-spacing: .3px; }
 
-  /* SERVICES */
+  /* ─── SECCIÓN GENÉRICA ─── */
   .section { padding: 100px 6%; }
   .section-label {
     display: inline-block;
-    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
     color: var(--rose); text-transform: uppercase;
     margin-bottom: 14px;
   }
-  .section h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
-  .section-sub { font-size: 16px; color: var(--muted); max-width: 520px; line-height: 1.7; margin-bottom: 60px; font-weight: 300; }
+  .section h2 { font-size: clamp(28px, 3.5vw, 46px); font-weight: 700; line-height: 1.15; margin-bottom: 16px; letter-spacing: -.5px; }
+  .section-sub { font-size: 16px; color: var(--muted); max-width: 540px; line-height: 1.75; margin-bottom: 64px; font-weight: 300; }
 
+  /* ─── MISIÓN / VISIÓN ─── */
+  .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .mv-card {
+    border-radius: 24px; padding: 40px 36px;
+    position: relative; overflow: hidden;
+  }
+  .mv-card.mision { background: var(--dark); }
+  .mv-card.vision { background: var(--rose-pale); border: 1px solid rgba(232,65,106,0.15); }
+  .mv-card-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 18px;
+  }
+  .mv-card.mision .mv-card-label { color: #FF91AD; }
+  .mv-card.vision .mv-card-label { color: var(--rose); }
+  .mv-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+  .mv-card.mision h3 { color: white; }
+  .mv-card.vision h3 { color: var(--text); }
+  .mv-card p { font-size: 14px; line-height: 1.8; margin-bottom: 24px; font-weight: 300; }
+  .mv-card.mision p { color: rgba(255,255,255,0.5); }
+  .mv-card.vision p { color: var(--muted); }
+  .mv-list { display: flex; flex-direction: column; gap: 10px; }
+  .mv-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; }
+  .mv-card.mision .mv-item { color: rgba(255,255,255,0.55); }
+  .mv-card.vision .mv-item { color: var(--muted); }
+  .mv-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rose); flex-shrink: 0; margin-top: 6px; }
+  .mv-card.mision .mv-dot { background: var(--rose-light); }
+
+  /* ─── SERVICIOS ─── */
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px;
   }
   .service-card {
@@ -145,26 +192,106 @@
     border-radius: 24px;
     padding: 40px 36px;
     transition: transform .25s, box-shadow .25s, border-color .25s;
-    cursor: default;
   }
   .service-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 24px 48px rgba(232,65,106,0.1);
+    box-shadow: 0 24px 56px rgba(232,65,106,0.1);
     border-color: rgba(232,65,106,0.25);
   }
   .card-icon {
-    width: 52px; height: 52px;
+    width: 56px; height: 56px;
     background: var(--rose-pale);
-    border-radius: 16px;
+    border-radius: 18px;
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 24px;
   }
-  .card-icon svg { width: 26px; height: 26px; fill: var(--rose); }
+  .card-icon svg { width: 28px; height: 28px; fill: var(--rose); }
+  .card-number { font-size: 11px; font-weight: 600; color: rgba(232,65,106,0.3); letter-spacing: 1px; margin-bottom: 18px; }
   .service-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
-  .service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; font-weight: 300; }
-  .card-number { font-size: 11px; font-weight: 600; color: rgba(232,65,106,0.35); letter-spacing: 1px; margin-bottom: 20px; }
+  .service-card p { font-size: 14px; color: var(--muted); line-height: 1.75; font-weight: 300; margin-bottom: 20px; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 8px; }
+  .tag {
+    padding: 4px 12px; border-radius: 50px;
+    background: var(--rose-pale);
+    color: var(--rose);
+    font-size: 11px; font-weight: 500; letter-spacing: .3px;
+    border: 1px solid rgba(232,65,106,0.15);
+  }
 
-  /* ABOUT */
+  /* ─── FLOTA ─── */
+  .flota-section { padding: 100px 6%; background: var(--dark); }
+  .flota-section .section-label { color: #FF91AD; }
+  .flota-section h2 { color: white; }
+  .flota-section .section-sub { color: rgba(255,255,255,0.45); }
+  .flota-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px; }
+  .flota-tab {
+    padding: 8px 20px; border-radius: 50px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5);
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    transition: .2s;
+  }
+  .flota-tab.active, .flota-tab:hover {
+    background: var(--rose); border-color: var(--rose);
+    color: white;
+  }
+  .flota-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+  .flota-card {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.04);
+    transition: transform .25s, border-color .25s;
+  }
+  .flota-card:hover { transform: translateY(-4px); border-color: rgba(232,65,106,0.35); }
+  .flota-card-img {
+    height: 160px; overflow: hidden;
+    background: rgba(255,255,255,0.03);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .flota-card-img img { width: 100%; height: 100%; object-fit: cover; opacity: .75; }
+  .flota-card-img-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, rgba(232,65,106,0.12), rgba(232,65,106,0.04));
+  }
+  .flota-card-img-placeholder svg { width: 52px; height: 52px; fill: rgba(232,65,106,0.4); }
+  .flota-card-body { padding: 22px 24px; }
+  .flota-card-type { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--rose-light); margin-bottom: 6px; }
+  .flota-card h4 { font-size: 15px; font-weight: 600; color: white; margin-bottom: 8px; }
+  .flota-card p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; font-weight: 300; }
+
+  /* ─── FILOSOFÍA ─── */
+  .filosofia-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .filosofia-card {
+    border-radius: 24px; padding: 40px 32px;
+    background: var(--rose-pale);
+    border: 1px solid rgba(232,65,106,0.12);
+    position: relative; overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+  }
+  .filosofia-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(232,65,106,0.1); }
+  .filosofia-num {
+    position: absolute; top: 24px; right: 24px;
+    font-size: 48px; font-weight: 800;
+    color: rgba(232,65,106,0.08); line-height: 1;
+    letter-spacing: -2px;
+  }
+  .filosofia-icon {
+    width: 52px; height: 52px;
+    background: white;
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(232,65,106,0.12);
+  }
+  .filosofia-icon svg { width: 26px; height: 26px; fill: var(--rose); }
+  .filosofia-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+  .filosofia-card p { font-size: 14px; color: var(--muted); line-height: 1.75; font-weight: 300; }
+
+  /* ─── ABOUT ─── */
   .about-section {
     padding: 100px 6%;
     background: var(--dark);
@@ -173,85 +300,132 @@
     gap: 80px;
     align-items: center;
   }
-  .about-visual {
-    position: relative;
-    border-radius: 32px;
-    overflow: hidden;
-    aspect-ratio: 4/3;
-  }
+  .about-visual { position: relative; border-radius: 32px; overflow: hidden; aspect-ratio: 4/3; }
   .about-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .about-visual-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(232,65,106,0.3), transparent);
+    background: linear-gradient(135deg, rgba(232,65,106,0.28), transparent 60%);
   }
   .about-badge {
     position: absolute; bottom: 28px; left: 28px;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 16px;
-    padding: 16px 20px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 18px;
+    padding: 18px 22px;
     color: white;
   }
-  .about-badge-num { font-size: 28px; font-weight: 700; color: var(--rose-light); }
-  .about-badge-text { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+  .about-badge-num { font-size: 30px; font-weight: 800; color: var(--rose-light); line-height: 1; }
+  .about-badge-text { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 4px; }
   .about-content .section-label { color: #FF91AD; }
   .about-content h2 { color: white; }
-  .about-content p { color: rgba(255,255,255,0.5); font-weight: 300; font-size: 16px; line-height: 1.8; margin-bottom: 24px; }
+  .about-content p { color: rgba(255,255,255,0.48); font-weight: 300; font-size: 16px; line-height: 1.8; margin-bottom: 24px; }
   .pill-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
   .pill {
-    padding: 8px 18px;
-    border-radius: 50px;
+    padding: 8px 18px; border-radius: 50px;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.65);
     font-size: 13px; font-weight: 400;
+    transition: .2s;
   }
+  .pill:hover { background: rgba(232,65,106,0.15); border-color: rgba(232,65,106,0.3); color: #FF91AD; }
 
-  /* CTA */
-  .cta-section {
-    padding: 100px 6%;
+  /* ─── CARGO TYPES ─── */
+  .cargo-section { padding: 80px 6%; background: var(--rose-pale); }
+  .cargo-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+  .cargo-item {
+    flex: 1; min-width: 140px;
+    background: white;
+    border: 1px solid rgba(232,65,106,0.12);
+    border-radius: 18px;
+    padding: 28px 24px;
     text-align: center;
-    background: var(--rose-pale);
-    position: relative;
-    overflow: hidden;
+    transition: .25s;
+  }
+  .cargo-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(232,65,106,0.1); border-color: rgba(232,65,106,0.3); }
+  .cargo-item-icon { width: 44px; height: 44px; background: var(--rose-pale); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+  .cargo-item-icon svg { width: 22px; height: 22px; fill: var(--rose); }
+  .cargo-item h4 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .cargo-item p { font-size: 12px; color: var(--muted); font-weight: 300; }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    padding: 120px 6%;
+    text-align: center;
+    background: var(--dark2);
+    position: relative; overflow: hidden;
   }
   .cta-blob {
     position: absolute;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(232,65,106,0.15), transparent 70%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(232,65,106,0.14), transparent 70%);
     top: 50%; left: 50%; transform: translate(-50%,-50%);
     pointer-events: none;
   }
-  .cta-section h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 700; margin-bottom: 16px; position: relative; }
-  .cta-section p { font-size: 16px; color: var(--muted); margin-bottom: 40px; font-weight: 300; position: relative; }
-  .cta-section .btn-primary { position: relative; font-size: 16px; padding: 18px 44px; }
+  .cta-section .section-label { color: #FF91AD; position: relative; }
+  .cta-section h2 { font-size: clamp(28px, 3.5vw, 48px); font-weight: 800; color: white; margin-bottom: 16px; position: relative; letter-spacing: -.5px; }
+  .cta-section h2 span { color: var(--rose-light); }
+  .cta-section p { font-size: 16px; color: rgba(255,255,255,0.42); margin-bottom: 44px; font-weight: 300; position: relative; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+  .btn-wpp-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25D366; color: white;
+    padding: 16px 36px; border-radius: 50px;
+    font-size: 15px; font-weight: 600;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: .2s;
+  }
+  .btn-wpp-cta:hover { background: #1ebe5a; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37,211,102,0.35); }
+  .cta-section .btn-ghost { color: rgba(255,255,255,0.65); }
 
-  /* FOOTER */
+  /* ─── CONTACT INFO STRIP ─── */
+  .contact-strip {
+    background: var(--rose);
+    padding: 40px 6%;
+    display: flex; gap: 40px; flex-wrap: wrap;
+    justify-content: center; align-items: center;
+  }
+  .contact-strip-item { display: flex; align-items: center; gap: 14px; }
+  .contact-strip-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-strip-icon svg { width: 20px; height: 20px; fill: white; }
+  .contact-strip-label { font-size: 11px; color: rgba(255,255,255,0.7); font-weight: 500; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; }
+  .contact-strip-value { font-size: 14px; color: white; font-weight: 600; }
+  .contact-strip-sep { width: 1px; height: 40px; background: rgba(255,255,255,0.2); }
+
+  /* ─── FOOTER ─── */
   footer {
     background: var(--dark);
-    padding: 48px 6%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
+    padding: 56px 6% 32px;
   }
-  .footer-left { display: flex; align-items: center; gap: 12px; }
-  .footer-logo-text { font-size: 16px; font-weight: 700; color: white; letter-spacing: 2px; }
-  .footer-copy { font-size: 13px; color: rgba(255,255,255,0.3); }
-  .footer-links { display: flex; gap: 28px; }
-  .footer-links a { text-decoration: none; font-size: 13px; color: rgba(255,255,255,0.4); transition: color .2s; cursor: pointer; }
-  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+  .footer-top {
+    display: flex; gap: 60px; flex-wrap: wrap;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 32px;
+  }
+  .footer-brand { flex: 1; min-width: 220px; }
+  .footer-brand .logo-text { color: white; font-size: 20px; letter-spacing: 3px; margin-left: 4px; }
+  .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.35); line-height: 1.7; margin-top: 16px; font-weight: 300; max-width: 260px; }
+  .footer-col { min-width: 140px; }
+  .footer-col-title { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+  .footer-col a { display: block; text-decoration: none; font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 10px; cursor: pointer; transition: color .2s; }
+  .footer-col a:hover { color: rgba(255,255,255,0.8); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.2); font-style: italic; }
 
-  /* MODAL DE CONTACTO */
+  /* ─── MODAL ─── */
   .modal-overlay {
     display: none;
     position: fixed; inset: 0; z-index: 200;
-    background: rgba(26,13,18,0.7);
-    backdrop-filter: blur(6px);
+    background: rgba(26,13,18,0.72);
+    backdrop-filter: blur(8px);
     align-items: center;
     justify-content: center;
+    padding: 20px;
   }
   .modal-overlay.active { display: flex; }
   .modal {
@@ -261,7 +435,7 @@
     width: 100%;
     max-width: 480px;
     position: relative;
-    box-shadow: 0 40px 80px rgba(232,65,106,0.15);
+    box-shadow: 0 48px 96px rgba(232,65,106,0.18);
     animation: modalIn .25s ease;
   }
   @keyframes modalIn {
@@ -272,27 +446,22 @@
     position: absolute; top: 20px; right: 20px;
     background: var(--rose-pale); border: none;
     width: 36px; height: 36px; border-radius: 50%;
-    cursor: pointer; font-size: 18px; color: var(--rose);
+    cursor: pointer; font-size: 16px; color: var(--rose);
     display: flex; align-items: center; justify-content: center;
     transition: background .2s;
   }
   .modal-close:hover { background: var(--rose-mid); }
-  .modal-title {
-    font-size: 24px; font-weight: 700; color: var(--text);
-    margin-bottom: 8px;
-  }
-  .modal-subtitle {
-    font-size: 14px; color: var(--muted); margin-bottom: 36px; font-weight: 300; line-height: 1.6;
-  }
+  .modal-title { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .modal-subtitle { font-size: 14px; color: var(--muted); margin-bottom: 36px; font-weight: 300; line-height: 1.65; }
   .contact-card {
-    border: 1px solid rgba(232,65,106,0.15);
+    border: 1px solid rgba(232,65,106,0.14);
     border-radius: 18px;
-    padding: 24px 28px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    padding: 24px 26px;
+    margin-bottom: 14px;
+    display: flex; align-items: flex-start; gap: 18px;
+    transition: border-color .2s;
   }
+  .contact-card:hover { border-color: rgba(232,65,106,0.3); }
   .contact-card-icon {
     width: 48px; height: 48px; flex-shrink: 0;
     border-radius: 14px;
@@ -300,10 +469,11 @@
   }
   .contact-card-icon.wpp { background: #E7F9EF; }
   .contact-card-icon.mail { background: var(--rose-pale); }
+  .contact-card-icon.addr { background: #EEF0FF; }
   .contact-card-icon svg { width: 24px; height: 24px; }
   .contact-card-body { flex: 1; }
   .contact-card-label { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-  .contact-card-value { font-size: 14px; font-weight: 500; color: var(--text); }
+  .contact-card-value { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.5; }
   .btn-wpp {
     display: inline-flex; align-items: center; gap: 8px;
     background: #25D366; color: white;
@@ -311,7 +481,7 @@
     font-size: 13px; font-weight: 600;
     border: none; cursor: pointer;
     text-decoration: none;
-    transition: background .2s, transform .15s;
+    transition: .2s;
     margin-top: 10px;
   }
   .btn-wpp:hover { background: #1ebe5a; transform: translateY(-1px); }
@@ -322,47 +492,111 @@
     font-size: 13px; font-weight: 600;
     border: none; cursor: pointer;
     text-decoration: none;
-    transition: background .2s, transform .15s;
+    transition: .2s;
     margin-top: 10px;
   }
   .btn-mail:hover { background: #c93059; transform: translateY(-1px); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { display: none; }
+    .hamburger { display: block; }
+    .mv-grid { grid-template-columns: 1fr; }
+    .about-section { grid-template-columns: 1fr; gap: 40px; }
+    .filosofia-grid { grid-template-columns: 1fr; }
+    .contact-strip-sep { display: none; }
+    .flota-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat { max-width: none; }
+    .stats { flex-wrap: wrap; gap: 32px; }
+    .stat { border-right: none; flex: 0 0 45%; }
+  }
+  @media (max-width: 600px) {
+    .hero-chips { display: none; }
+    .flota-grid { grid-template-columns: 1fr; }
+    .modal { padding: 36px 28px; }
+    .mv-card { padding: 32px 28px; }
+  }
+
+  /* ─── MOBILE NAV ─── */
+  .mobile-nav {
+    display: none;
+    position: fixed; top: 72px; left: 0; right: 0; z-index: 99;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(232,65,106,0.1);
+    padding: 20px 6%;
+    flex-direction: column; gap: 4px;
+  }
+  .mobile-nav.active { display: flex; }
+  .mobile-nav a {
+    text-decoration: none; font-size: 15px; font-weight: 500;
+    color: var(--muted); padding: 12px 0;
+    border-bottom: 1px solid rgba(232,65,106,0.07);
+    cursor: pointer; transition: color .2s;
+  }
+  .mobile-nav a:last-child { border-bottom: none; color: var(--rose); font-weight: 600; }
+  .mobile-nav a:hover { color: var(--rose); }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">
+<!-- ─── HEADER ─── -->
+<header id="header">
+  <a class="logo" href="#">
     <div class="logo-icon">
       <svg viewBox="0 0 24 24"><path d="M20 6H4L2 2H0v2h1.73l3.48 7.36L4 14c0 1.1.9 2 2 2h12v-2H6.12c-.14 0-.25-.11-.25-.25L6 13h12.62c.56 0 1.04-.34 1.25-.85l2.09-5.27C22.41 5.52 21.79 4.5 21 5H20z"/></svg>
     </div>
     <span class="logo-text">MARCARGO</span>
-  </div>
+  </a>
   <nav>
-    <a href="#">Inicio</a>
-    <a onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Servicios</a>
-    <a href="#">Nosotros</a>
-    <a onclick="document.getElementById('modalContacto').classList.add('active')">Contacto</a>
+    <a onclick="scroll2('servicios')">Servicios</a>
+    <a onclick="scroll2('flota')">Flota</a>
+    <a onclick="scroll2('nosotros')">Nosotros</a>
+    <a onclick="scroll2('contacto')">Contacto</a>
   </nav>
-  <button class="btn-nav" onclick="document.getElementById('modalContacto').classList.add('active')">Solicitar Servicio</button>
+  <div class="nav-right">
+    <button class="btn-nav" onclick="openModal()">Solicitar Servicio</button>
+    <button class="hamburger" onclick="toggleMobileNav()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
+<div class="mobile-nav" id="mobileNav">
+  <a onclick="scroll2('servicios');closeMobileNav()">Servicios</a>
+  <a onclick="scroll2('flota');closeMobileNav()">Flota</a>
+  <a onclick="scroll2('nosotros');closeMobileNav()">Nosotros</a>
+  <a onclick="scroll2('contacto');closeMobileNav()">Contacto</a>
+  <a onclick="openModal();closeMobileNav()">Solicitar Servicio →</a>
+</div>
+
+<!-- ─── HERO ─── -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-gradient"></div>
   <div class="hero-content">
     <div class="hero-tag">
       <div class="hero-tag-dot"></div>
-      Logística Portuaria de Alto Rendimiento
+      Logística Portuaria y Transporte Nacional
     </div>
-    <h1>Movemos tu carga con <span>precisión</span> y confianza</h1>
-    <p>Empresa líder en movimiento de contenedores. Operamos las 24 horas para que tu carga siempre llegue a tiempo.</p>
+    <h1>Conectamos tu mundo, <span>sin fronteras</span></h1>
+    <p>Transporte de carga pesada y liviana a nivel nacional, con servicios especializados desde el Puerto y Aeropuerto. Soluciones LCL y FCL con respaldo operativo 24/7.</p>
     <div class="hero-btns">
-      <button class="btn-primary" onclick="document.getElementById('modalContacto').classList.add('active')">Solicitar Servicio</button>
-      <button class="btn-ghost">Conocer más →</button>
+      <button class="btn-primary" onclick="openModal()">Solicitar Servicio</button>
+      <button class="btn-ghost" onclick="scroll2('servicios')">Ver Servicios →</button>
+    </div>
+    <div class="hero-chips">
+      <span class="hero-chip">Carga General</span>
+      <span class="hero-chip">IMO</span>
+      <span class="hero-chip">Reefer</span>
+      <span class="hero-chip">IQBF</span>
+      <span class="hero-chip">Sobredimensionada</span>
+      <span class="hero-chip">LCL / FCL</span>
     </div>
   </div>
 </section>
 
+<!-- ─── STATS ─── -->
 <div class="stats">
   <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Contenedores mensuales</div></div>
   <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Disponibilidad total</div></div>
@@ -370,41 +604,366 @@
   <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Compromiso con el cliente</div></div>
 </div>
 
-<section class="section" id="servicios">
+<!-- ─── MISIÓN Y VISIÓN ─── -->
+<section class="section">
+  <div class="section-label">Identidad Corporativa</div>
+  <h2>Misión y Visión</h2>
+  <p class="section-sub">Los principios que guían cada operación y el rumbo que nos llevará a ser el aliado logístico de referencia en el país.</p>
+  <div class="mv-grid">
+    <div class="mv-card mision">
+      <div class="mv-card-label">Misión</div>
+      <h3>Lo que hacemos cada día</h3>
+      <p>Brindar soluciones logísticas integrales y confiables, ofreciendo servicios de transporte y apoyo operativo con altos estándares de seguridad, eficiencia y compromiso, conectando a nuestros clientes con sus destinos sin fronteras.</p>
+      <div class="mv-list">
+        <div class="mv-item"><div class="mv-dot"></div><span>Atención personalizada según cada operación</span></div>
+        <div class="mv-item"><div class="mv-dot"></div><span>Cumplimiento de normas y requisitos logísticos</span></div>
+        <div class="mv-item"><div class="mv-dot"></div><span>Respuesta rápida y acompañamiento constante</span></div>
+        <div class="mv-item"><div class="mv-dot"></div><span>Enfoque en la continuidad de la cadena logística</span></div>
+      </div>
+    </div>
+    <div class="mv-card vision">
+      <div class="mv-card-label">Visión</div>
+      <h3>Hacia dónde nos dirigimos</h3>
+      <p>Ser una empresa logística reconocida a nivel nacional por su eficiencia, crecimiento sostenible y calidad de servicio, consolidándonos como un aliado estratégico para nuestros clientes en cada etapa de su operación.</p>
+      <div class="mv-list">
+        <div class="mv-item"><div class="mv-dot"></div><span>Expansión progresiva de servicios logísticos</span></div>
+        <div class="mv-item"><div class="mv-dot"></div><span>Innovación constante en procesos operativos</span></div>
+        <div class="mv-item"><div class="mv-dot"></div><span>Relaciones comerciales sólidas y duraderas</span></div>
+        <div class="mv-item"><div class="mv-dot"></div><span>Desarrollo y fortalecimiento de nuestro equipo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICIOS ─── -->
+<section class="section" id="servicios" style="background: #FAFAFA; padding-top: 100px;">
   <div class="section-label">Servicios</div>
-  <h2>Lo que hacemos por ti</h2>
-  <p class="section-sub">Soluciones logísticas integrales desde el primer contacto hasta la entrega final.</p>
+  <h2>Soluciones logísticas integrales</h2>
+  <p class="section-sub">Desde el primer contacto hasta la entrega final, cubrimos cada etapa de tu operación con eficiencia, seguridad y compromiso.</p>
   <div class="services-grid">
+
     <div class="service-card">
       <div class="card-number">01</div>
       <div class="card-icon">
         <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5S5.17 15.5 6 15.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
       </div>
-      <h3>Transporte de Contenedores</h3>
-      <p>Movilizamos carga de forma segura y eficiente desde y hacia el puerto, con seguimiento en tiempo real.</p>
+      <h3>Transporte de Carga</h3>
+      <p>Transporte a nivel nacional para todo tipo de carga. Contamos con plataformas convencionales, cama baja, cama cuna y furgones especializados. Operamos desde Puerto y Aeropuerto.</p>
+      <div class="tag-list">
+        <span class="tag">Nacional</span>
+        <span class="tag">Puerto</span>
+        <span class="tag">Aeropuerto</span>
+        <span class="tag">LCL / FCL</span>
+      </div>
     </div>
+
     <div class="service-card">
       <div class="card-number">02</div>
       <div class="card-icon">
         <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
       </div>
       <h3>Coordinación Logística</h3>
-      <p>Gestión completa de citas, permisos, rutas y operaciones portuarias para máxima eficiencia.</p>
+      <p>Alineamos clientes, operadores y proveedores para asegurar continuidad operativa. Gestionamos citas, permisos, rutas y planificamos cada etapa para cumplir tiempos sin fricciones.</p>
+      <div class="tag-list">
+        <span class="tag">Planificación</span>
+        <span class="tag">Permisos</span>
+        <span class="tag">Rutas</span>
+      </div>
     </div>
+
     <div class="service-card">
       <div class="card-number">03</div>
       <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      </div>
+      <h3>Resguardo de Mercadería</h3>
+      <p>Servicio de acompañamiento vehicular y personal dentro de la unidad para garantizar control, seguridad y protección continua de la carga durante traslados, esperas o procesos operativos.</p>
+      <div class="tag-list">
+        <span class="tag">Cabina</span>
+        <span class="tag">Escolta Móvil</span>
+        <span class="tag">Trazabilidad</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="card-number">04</div>
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 7H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm0 12H4V9h16v10zM12 3c0-.55-.45-1-1-1H9c-.55 0-1 .45-1 1v4h2V4h2v3h2V3z"/></svg>
+      </div>
+      <h3>Maniobras y Equipos</h3>
+      <p>Cuadrillas especializadas para carga, descarga y manipulación de mercancías. Personal capacitado para carga general, IMO, granel y refrigerada con stacker, montacargas y rampas.</p>
+      <div class="tag-list">
+        <span class="tag">Estiba</span>
+        <span class="tag">Stacker</span>
+        <span class="tag">Montacargas</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="card-number">05</div>
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c7 0 8-8 8-8s5 4 3 10h2c2-7-1-14-4-14zm-9.79 9.91C7.7 15.57 8.9 11.2 17 9.22 15.78 12.14 14 17.22 7.21 17.91z"/></svg>
+      </div>
+      <h3>Almacenamiento y Trasegado</h3>
+      <p>Espacios adecuados para almacenamiento temporal y trasegado de mercadería, permitiendo reorganizar, redistribuir o acondicionar la carga según la necesidad del cliente.</p>
+      <div class="tag-list">
+        <span class="tag">Temporal</span>
+        <span class="tag">Trasegado</span>
+        <span class="tag">Redistribución</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="card-number">06</div>
+      <div class="card-icon">
         <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
       </div>
-      <h3>Operaciones 24/7</h3>
-      <p>Nuestro equipo opera sin interrupciones. Tu carga no espera, y nosotros tampoco.</p>
+      <h3>Monitoreo Operativo 24/7</h3>
+      <p>Seguimiento permanente mediante llamadas, reportes y GPS en todas nuestras unidades. Visibilidad en tiempo real para anticipar incidencias e informar avances en cada entrega.</p>
+      <div class="tag-list">
+        <span class="tag">GPS</span>
+        <span class="tag">Reportes</span>
+        <span class="tag">Tiempo Real</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── TIPOS DE CARGA ─── -->
+<section class="cargo-section" id="cargas">
+  <div style="text-align:center; margin-bottom: 52px;">
+    <div class="section-label" style="display:block; text-align:center;">Especialización</div>
+    <h2 style="font-size: clamp(24px, 3vw, 38px); font-weight:700; letter-spacing:-.5px; margin-bottom:12px;">Tipos de carga que operamos</h2>
+    <p style="font-size:16px; color:var(--muted); font-weight:300; max-width:500px; margin:0 auto; line-height:1.7;">Capacidad técnica y normativa para manejar cada tipo de carga con los más altos estándares de seguridad.</p>
+  </div>
+  <div class="cargo-grid">
+    <div class="cargo-item">
+      <div class="cargo-item-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+      </div>
+      <h4>Carga General</h4>
+      <p>Mercadería estándar en cualquier presentación</p>
+    </div>
+    <div class="cargo-item">
+      <div class="cargo-item-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      </div>
+      <h4>IMO</h4>
+      <p>Mercadería peligrosa con protocolos internacionales</p>
+    </div>
+    <div class="cargo-item">
+      <div class="cargo-item-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 11V3h-7v3H9V3H2v8h7V8h2v10h4v3h7v-8h-7v3h-2V8h2v3h7zM7 9H4V5h3v4zm10 6h3v4h-3v-4zm0-12h3v4h-3V3z"/></svg>
+      </div>
+      <h4>Reefer</h4>
+      <p>Carga refrigerada con control de temperatura</p>
+    </div>
+    <div class="cargo-item">
+      <div class="cargo-item-icon">
+        <svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29l-1.43-1.43z"/></svg>
+      </div>
+      <h4>IQBF</h4>
+      <p>Insumos químicos y bienes fiscalizados</p>
+    </div>
+    <div class="cargo-item">
+      <div class="cargo-item-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 6.5l-4-4-9.5 9.5-2.5 6.5 6.5-2.5L21 6.5zm-14.71 9.21L3 17l1.29-3.29L3 12l1 1 1.29-1.29.71.71-1.29 1.29 1 1-1.42.99zm2.12-.71L7 13.71l6-6 1.41 1.41-6 6z"/></svg>
+      </div>
+      <h4>Sobredimensionada</h4>
+      <p>Maquinaria y estructuras de gran volumen</p>
+    </div>
+    <div class="cargo-item">
+      <div class="cargo-item-icon">
+        <svg viewBox="0 0 24 24"><path d="M6 2v6l2 2-2 2v6l6-3 6 3v-6l-2-2 2-2V2l-6 3-6-3zm10 11.62V18l-4-2-4 2v-4.38l2-2-2-2V5.38L12 7.5l4-2.12V9.6l-2 2 2 2.02z"/></svg>
+      </div>
+      <h4>LCL / FCL</h4>
+      <p>Contenedor completo o consolidado</p>
     </div>
   </div>
 </section>
 
-<section class="about-section">
+<!-- ─── FLOTA ─── -->
+<section class="flota-section" id="flota">
+  <div class="section-label">Flota</div>
+  <h2>Unidades especializadas</h2>
+  <p class="section-sub">Contamos con unidades adaptadas a distintos tipos de requerimientos operativos para garantizar seguridad y cumplimiento en cada ruta.</p>
+
+  <div class="flota-tabs">
+    <button class="flota-tab active" onclick="filterFlota('all', this)">Todos</button>
+    <button class="flota-tab" onclick="filterFlota('plataforma', this)">Plataformas</button>
+    <button class="flota-tab" onclick="filterFlota('furgon', this)">Furgones</button>
+    <button class="flota-tab" onclick="filterFlota('equipo', this)">Equipos</button>
+  </div>
+
+  <div class="flota-grid" id="flotaGrid">
+
+    <div class="flota-card" data-cat="plataforma">
+      <div class="flota-card-img">
+        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=500&q=75" alt="Plataforma">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,65,106,0.25),transparent)"></div>
+      </div>
+      <div class="flota-card-body">
+        <div class="flota-card-type">Plataforma</div>
+        <h4>Plataforma 20' y 40'</h4>
+        <p>Para contenedores y mercadería diversa. Compatible con distintos puntos de carga/descarga.</p>
+      </div>
+    </div>
+
+    <div class="flota-card" data-cat="plataforma">
+      <div class="flota-card-img">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=75" alt="Cama Baja">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,65,106,0.25),transparent)"></div>
+      </div>
+      <div class="flota-card-body">
+        <div class="flota-card-type">Plataforma Especial</div>
+        <h4>Cama Baja</h4>
+        <p>Traslado de maquinaria y estructuras sobredimensionadas. Menor altura de plataforma para cumplimiento vial.</p>
+      </div>
+    </div>
+
+    <div class="flota-card" data-cat="plataforma">
+      <div class="flota-card-img">
+        <div class="flota-card-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/></svg>
+        </div>
+      </div>
+      <div class="flota-card-body">
+        <div class="flota-card-type">Plataforma Especial</div>
+        <h4>Cama Cuna</h4>
+        <p>Para equipos voluminosos o de gran altura. Reduce el centro de gravedad y mejora la seguridad en ruta.</p>
+      </div>
+    </div>
+
+    <div class="flota-card" data-cat="furgon">
+      <div class="flota-card-img">
+        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=500&q=75" alt="Furgón">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,65,106,0.25),transparent)"></div>
+      </div>
+      <div class="flota-card-body">
+        <div class="flota-card-type">Furgón</div>
+        <h4>Furgón Cerrado</h4>
+        <p>Protección total de la carga durante el traslado. Ideal para mercadería que requiere cuidado y buena presentación.</p>
+      </div>
+    </div>
+
+    <div class="flota-card" data-cat="furgon">
+      <div class="flota-card-img">
+        <div class="flota-card-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+        </div>
+      </div>
+      <div class="flota-card-body">
+        <div class="flota-card-type">Furgón Especializado</div>
+        <h4>Furgón Reefer</h4>
+        <p>Control de temperatura para carga refrigerada. Garantiza la cadena de frío durante todo el recorrido.</p>
+      </div>
+    </div>
+
+    <div class="flota-card" data-cat="furgon">
+      <div class="flota-card-img">
+        <div class="flota-card-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/></svg>
+        </div>
+      </div>
+      <div class="flota-card-body">
+        <div class="flota-card-type">Furgón</div>
+        <h4>Alas de Gaviota</h4>
+        <p>Apertura lateral para carga volumétrica o palletizada. Operaciones más rápidas en espacios reducidos.</p>
+      </div>
+    </div>
+
+    <div class="flota-card" data-cat="furgon">
+      <div class="flota-card-img">
+        <div class="flota-card-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0 0 13 3.06V1h-2v2.06A8.994 8.994 0 0 0 3.06 11H1v2h2.06A8.994 8.994 0 0 0 11 20.94V23h2v-2.06A8.994 8.994 0 0 0 20.94 13H23v-2h-2.06z"/></svg>
+        </div>
+      </div>
+      <div class="flota-card-body">
+        <div class="flota-card-type">Furgón</div>
+        <h4>Baranda Rebatible</h4>
+        <p>Flexibilidad en la operación con protección lateral. Apertura para agilizar la estiba sin perder seguridad.</p>
+      </div>
+    </div>
+
+    <div class="flota-card" data-cat="equipo">
+      <div class="flota-card-img">
+        <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=500&q=75" alt="Stacker">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,65,106,0.25),transparent)"></div>
+      </div>
+      <div class="flota-card-body">
+        <div class="flota-card-type">Equipo</div>
+        <h4>Stacker de Contenedores</h4>
+        <p>Eleva, mueve y apila contenedores en patio o zona operativa sin necesidad de grúas externas.</p>
+      </div>
+    </div>
+
+    <div class="flota-card" data-cat="equipo">
+      <div class="flota-card-img">
+        <div class="flota-card-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14z"/></svg>
+        </div>
+      </div>
+      <div class="flota-card-body">
+        <div class="flota-card-type">Equipo</div>
+        <h4>Montacargas</h4>
+        <p>Diversas capacidades para mover pallets y bultos en almacenes y patios logísticos.</p>
+      </div>
+    </div>
+
+    <div class="flota-card" data-cat="equipo">
+      <div class="flota-card-img">
+        <div class="flota-card-img-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
+        </div>
+      </div>
+      <div class="flota-card-body">
+        <div class="flota-card-type">Equipo</div>
+        <h4>Rampas y Stocka</h4>
+        <p>Rampas para nivelar alturas entre vehículos y almacenes. Stocka para movilización de pallets en cortas distancias.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FILOSOFÍA ─── -->
+<section class="section" id="filosofia">
+  <div class="section-label">Filosofía Operativa</div>
+  <h2>Los pilares de nuestra operación</h2>
+  <p class="section-sub">Para MARCARGO la logística no solo mueve carga, sino oportunidades. Fundamentamos nuestra operación en tres pilares que garantizan fluidez, control y seguridad.</p>
+  <div class="filosofia-grid">
+    <div class="filosofia-card">
+      <div class="filosofia-num">01</div>
+      <div class="filosofia-icon">
+        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      </div>
+      <h3>Coordinación Logística</h3>
+      <p>Alineamos clientes, operadores y proveedores para asegurar continuidad en la operación. Planificamos correctamente, optimizamos recursos y cumplimos plazos sin fricciones en la cadena logística.</p>
+    </div>
+    <div class="filosofia-card">
+      <div class="filosofia-num">02</div>
+      <div class="filosofia-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      </div>
+      <h3>Monitoreo Operativo</h3>
+      <p>Seguimiento permanente mediante llamadas, reportes y sistemas GPS en todas nuestras unidades. Visibilidad en tiempo real para anticipar incidencias y reforzar la puntualidad en cada entrega.</p>
+    </div>
+    <div class="filosofia-card">
+      <div class="filosofia-num">03</div>
+      <div class="filosofia-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+      </div>
+      <h3>Control y Seguridad</h3>
+      <p>Documentación al día en unidades y personal operativo. Protocolos preventivos y planes de respuesta ante eventualidades para servicios seguros, ordenados y alineados a los requisitos normativos del sector.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOBRE NOSOTROS ─── -->
+<section class="about-section" id="nosotros">
   <div class="about-visual">
-    <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&q=80" alt="Puerto logístico">
+    <img src="https://images.unsplash.com/photo-1494412685616-a5d310fbb07d?w=800&q=80" alt="Operación logística MARCARGO">
     <div class="about-visual-overlay"></div>
     <div class="about-badge">
       <div class="about-badge-num">8+</div>
@@ -414,49 +973,104 @@
   <div class="about-content">
     <div class="section-label">Sobre Nosotros</div>
     <h2>Logística con propósito y expertise</h2>
-    <p>Somos una empresa logística especializada en el movimiento de contenedores en el puerto, con amplia experiencia en el sector.</p>
-    <p>Combinamos eficiencia operativa, tecnología de seguimiento y un profundo conocimiento del sector para ofrecer un servicio moderno y confiable.</p>
+    <p>Somos MARCARGO, una empresa dedicada al transporte de carga pesada y liviana a nivel nacional, con servicios especializados desde el Puerto y Aeropuerto para cargas LCL y FCL.</p>
+    <p>Contamos con unidades adaptadas a distintos tipos de requerimientos operativos y una logística sólida que garantiza eficiencia, seguridad y cumplimiento en cada operación.</p>
+    <p>Actuamos como un aliado estratégico para agencias de carga, aduanas y operadores logísticos — conectando cada destino, sin fronteras.</p>
     <div class="pill-list">
       <span class="pill">Eficiencia Operativa</span>
-      <span class="pill">Experiencia Comprobada</span>
+      <span class="pill">Flota Especializada</span>
       <span class="pill">Tecnología GPS</span>
       <span class="pill">Atención Personalizada</span>
-      <span class="pill">Cumplimiento Total</span>
+      <span class="pill">Cumplimiento Normativo</span>
+      <span class="pill">Aliado Estratégico</span>
     </div>
   </div>
 </section>
 
-<section class="cta-section">
+<!-- ─── CTA ─── -->
+<section class="cta-section" id="contacto">
   <div class="cta-blob"></div>
   <div class="section-label">Contáctanos</div>
-  <h2>¿Listo para optimizar tu logística?</h2>
-  <p>Hablemos sobre cómo MARCARGO puede mover tu negocio hacia adelante.</p>
-  <button class="btn-primary" onclick="document.getElementById('modalContacto').classList.add('active')">Solicitar Cotización</button>
+  <h2>¿Listo para mover tu carga <span>sin fronteras</span>?</h2>
+  <p>Hablemos sobre cómo MARCARGO puede convertirse en el aliado logístico que tu operación necesita. Respuesta rápida garantizada.</p>
+  <div class="cta-buttons">
+    <a class="btn-wpp-cta" href="https://wa.me/51943321934" target="_blank">
+      <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <button class="btn-primary" onclick="openModal()" style="font-size:15px; padding:16px 36px;">Solicitar Cotización</button>
+  </div>
 </section>
 
-<footer>
-  <div class="footer-left">
-    <div class="logo-icon">
-      <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:white"><path d="M20 6H4L2 2H0v2h1.73l3.48 7.36L4 14c0 1.1.9 2 2 2h12v-2H6.12c-.14 0-.25-.11-.25-.25L6 13h12.62c.56 0 1.04-.34 1.25-.85l2.09-5.27C22.41 5.52 21.79 4.5 21 5H20z"/></svg>
+<!-- ─── CONTACT STRIP ─── -->
+<div class="contact-strip">
+  <div class="contact-strip-item">
+    <div class="contact-strip-icon">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
     </div>
-    <span class="footer-logo-text">MARCARGO</span>
+    <div>
+      <div class="contact-strip-label">Teléfono / WhatsApp</div>
+      <div class="contact-strip-value">943-321-934</div>
+    </div>
   </div>
-  <span class="footer-copy">© 2026 MARCARGO · Logística Portuaria</span>
-  <div class="footer-links">
-    <a onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Servicios</a>
-    <a href="#">Nosotros</a>
-    <a onclick="document.getElementById('modalContacto').classList.add('active')">Contacto</a>
+  <div class="contact-strip-sep"></div>
+  <div class="contact-strip-item">
+    <div class="contact-strip-icon">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </div>
+    <div>
+      <div class="contact-strip-label">Correo Electrónico</div>
+      <div class="contact-strip-value">operaciones@marcargo.pe</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="logo-icon" style="width:34px;height:34px;">
+          <svg viewBox="0 0 24 24" style="width:17px;height:17px;fill:white"><path d="M20 6H4L2 2H0v2h1.73l3.48 7.36L4 14c0 1.1.9 2 2 2h12v-2H6.12c-.14 0-.25-.11-.25-.25L6 13h12.62c.56 0 1.04-.34 1.25-.85l2.09-5.27C22.41 5.52 21.79 4.5 21 5H20z"/></svg>
+        </div>
+        <span class="logo-text" style="color:white;font-size:18px;letter-spacing:3px;">MARCARGO</span>
+      </div>
+      <p>Soluciones logísticas integrales y confiables. Conectamos tu mundo, sin fronteras.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Servicios</div>
+      <a onclick="scroll2('servicios')">Transporte de Carga</a>
+      <a onclick="scroll2('servicios')">Coordinación Logística</a>
+      <a onclick="scroll2('servicios')">Resguardo</a>
+      <a onclick="scroll2('servicios')">Almacenamiento</a>
+      <a onclick="scroll2('servicios')">Maniobras y Equipos</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Flota</div>
+      <a onclick="scroll2('flota')">Plataformas</a>
+      <a onclick="scroll2('flota')">Cama Baja / Cama Cuna</a>
+      <a onclick="scroll2('flota')">Furgones</a>
+      <a onclick="scroll2('flota')">Equipos</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contacto</div>
+      <a href="tel:+51943321934">943-321-934</a>
+      <a href="mailto:operaciones@marcargo.pe">operaciones@marcargo.pe</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MARCARGO · Todos los derechos reservados</span>
+    <span class="footer-tagline">Conectamos tu mundo, sin fronteras</span>
   </div>
 </footer>
 
-<!-- MODAL CONTACTO -->
-<div class="modal-overlay" id="modalContacto" onclick="if(event.target===this)this.classList.remove('active')">
+<!-- ─── MODAL CONTACTO ─── -->
+<div class="modal-overlay" id="modalContacto" onclick="if(event.target===this)closeModal()">
   <div class="modal">
-    <button class="modal-close" onclick="document.getElementById('modalContacto').classList.remove('active')">✕</button>
+    <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-title">Contáctanos</div>
-    <p class="modal-subtitle">Estamos disponibles para atenderte. Elige el canal que prefieras.</p>
+    <p class="modal-subtitle">Estamos disponibles para atenderte. Elige el canal que prefieras y te respondemos a la brevedad.</p>
 
-    <!-- WhatsApp -->
     <div class="contact-card">
       <div class="contact-card-icon wpp">
         <svg viewBox="0 0 24 24" fill="#25D366">
@@ -465,15 +1079,14 @@
       </div>
       <div class="contact-card-body">
         <div class="contact-card-label">WhatsApp</div>
-        <div class="contact-card-value">Escríbenos directamente</div>
+        <div class="contact-card-value">943-321-934</div>
         <a class="btn-wpp" href="https://wa.me/51943321934" target="_blank">
-          <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Contáctanos
+          <svg viewBox="0 0 24 24" fill="white" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Abrir WhatsApp
         </a>
       </div>
     </div>
 
-    <!-- Correo -->
     <div class="contact-card">
       <div class="contact-card-icon mail">
         <svg viewBox="0 0 24 24" fill="none" stroke="#E8416A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -484,13 +1097,66 @@
       <div class="contact-card-body">
         <div class="contact-card-label">Correo Electrónico</div>
         <div class="contact-card-value">operaciones@marcargo.pe</div>
-        <a class="btn-mail" href="mailto:operaciones@marcargo.pe">
-          Enviar correo
-        </a>
+        <a class="btn-mail" href="mailto:operaciones@marcargo.pe">Enviar correo</a>
       </div>
     </div>
+
   </div>
 </div>
+
+<script>
+  function scroll2(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+  function openModal() {
+    document.getElementById('modalContacto').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modalContacto').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('active');
+  }
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('active');
+  }
+
+  window.addEventListener('scroll', function() {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  function filterFlota(cat, btn) {
+    document.querySelectorAll('.flota-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.flota-card').forEach(card => {
+      const show = cat === 'all' || card.dataset.cat === cat;
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  /* Counter animation */
+  function animateCounters() {
+    document.querySelectorAll('.stat-num').forEach(el => {
+      const text = el.textContent;
+      const num = parseInt(text.replace(/\D/g,''));
+      const suffix = text.replace(/[\d]/g,'');
+      if (!num) return;
+      let start = 0;
+      const step = num / 40;
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= num) { el.textContent = text; clearInterval(timer); return; }
+        el.textContent = Math.floor(start) + suffix;
+      }, 30);
+    });
+  }
+  const statsObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounters(); statsObs.disconnect(); } });
+  }, { threshold: 0.5 });
+  statsObs.observe(document.querySelector('.stats'));
+</script>
 
 </body>
 </html>
